@@ -1,15 +1,25 @@
 pipeline {
 	agent any
+	tools {
+		nodejs 'Node26'
+	}
 	stages {
-		stage('Checkout') { steps { checkout scm } }
+		stage('Checkout') {
+			steps {
+				checkout scm
+			}
+		}
 		stage('Build') {
 			steps {
 				echo 'Building...'
 				sh 'node --version'
-			}	
+				sh 'npm --version'
+			}
 		}
 		stage('Test') {
-			steps { echo 'Tests passed!' }
+			steps {
+				echo 'Tests passed!'
+			}	
 		}
 		stage('Deploy') {
 			steps {
@@ -23,5 +33,3 @@ pipeline {
 		failure { echo 'Pipeline FAILED!' }
 	}
 }
-
-
