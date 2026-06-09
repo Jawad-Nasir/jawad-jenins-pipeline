@@ -24,7 +24,7 @@ pipeline {
 		stage('Deploy') {
 			steps {
 				sh 'docker build -t jenkins-demo .'
-				sh 'docker run -it -p 3000:3000 jenkins-demo'
+				sh 'docker run -d -p 3000:3000 jenkins-demo'
 				echo 'Deployed!'
 			}
 		}
